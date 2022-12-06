@@ -30,7 +30,7 @@ app.get("/api", async (req, res) => {
     await page.goto(
       "https://www.whatismybrowser.com/detect/what-is-my-user-agent/"
     );
-    res.send(await page.content());
+    res.json({ data: await page.content() });
   } catch (err) {
     console.error(err);
     return null;
