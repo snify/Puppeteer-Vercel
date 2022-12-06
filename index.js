@@ -43,9 +43,9 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   puppeteer = require("puppeteer");
 } //
 
-app.get("/api/:url", async (req, res) => {
+app.get("/api", async (req, res) => {
   let options = {};
-  let url = req.params.url;
+  let url = req.query.url;
 
   if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
     options = {
