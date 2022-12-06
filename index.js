@@ -31,6 +31,9 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   require("puppeteer-extra-plugin-stealth/evasions/window.outerdimensions");
 
   puppeteer.use(StealthPlugin());
+
+  const userPrefs = require("puppeteer-extra-plugin-user-preferences");
+  puppeteer.use(userPrefs());
 } else {
   puppeteer = require("puppeteer");
 } //
