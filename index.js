@@ -59,6 +59,34 @@ app.get("/api", async (req, res) => {
     let browser = await puppeteer.launch(options);
 
     let page = await browser.newPage();
+
+    const blockedResources = [
+      // Assets
+      "*/favicon.ico",
+      ".css",
+      ".jpg",
+      ".jpeg",
+      ".gif",
+      ".png",
+      ".svg",
+      ".woff",
+
+      // Analytics and other fluff
+      "*.optimizely.com",
+      "everesttech.net",
+      "userzoom.com",
+      "doubleclick.net",
+      "googleadservices.com",
+      "adservice.google.com/*",
+      "connect.facebook.com",
+      "connect.facebook.net",
+      "sp.analytics.yahoo.com",
+    ];
+
+    await page._client.send("Network.setBlockedURLs", {
+      urls: blockedResources,
+    });
+
     await page.goto(
       "https://www.amazon.com/Kingston-240GB-Solid-SA400S37-240G/dp/B01N5IB20Q/?_encoding=UTF8&pd_rd_w=LV88W&content-id=amzn1.sym.af3f3930-6cf5-4728-bec1-8977c33a811a&pf_rd_p=af3f3930-6cf5-4728-bec1-8977c33a811a&pf_rd_r=9E49XR9DN4RHWGXTZYNW&pd_rd_wg=2dy1n&pd_rd_r=d27003b6-c8e1-42ba-bf0e-db02ac7e6a0c&ref_=pd_gw_exports_top_sellers_unrec"
     );
