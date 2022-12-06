@@ -27,8 +27,10 @@ app.get("/api", async (req, res) => {
     let browser = await puppeteer.launch(options);
 
     let page = await browser.newPage();
-    await page.goto("https://www.google.com");
-    res.send(await page.title());
+    await page.goto(
+      "https://www.whatismybrowser.com/detect/what-is-my-user-agent/"
+    );
+    res.send(await page.content());
   } catch (err) {
     console.error(err);
     return null;
