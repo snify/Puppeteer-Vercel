@@ -8,7 +8,6 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   // puppeteer = require("puppeteer-core");
   puppeteer = require("puppeteer-extra");
   // const AdblockerPlugin = require("puppeteer-extra-plugin-adblocker");
-  const StealthPlugin = require("puppeteer-extra-plugin-stealth");
   // puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
 
   // Add the Imports before StealthPlugin
@@ -29,6 +28,7 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   require("puppeteer-extra-plugin-stealth/evasions/user-agent-override");
   require("puppeteer-extra-plugin-stealth/evasions/webgl.vendor");
   require("puppeteer-extra-plugin-stealth/evasions/window.outerdimensions");
+  const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
   puppeteer.use(StealthPlugin());
 
