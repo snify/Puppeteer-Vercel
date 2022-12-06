@@ -6,7 +6,7 @@ let puppeteer;
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   chrome = require("chrome-aws-lambda");
   // puppeteer = require("puppeteer-core");
-  const puppeteer = require("puppeteer-extra");
+  puppeteer = require("puppeteer-extra");
   // const AdblockerPlugin = require("puppeteer-extra-plugin-adblocker");
   const StealthPlugin = require("puppeteer-extra-plugin-stealth");
   // puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
