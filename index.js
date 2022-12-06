@@ -34,6 +34,9 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
 
   const userPrefs = require("puppeteer-extra-plugin-user-preferences");
   puppeteer.use(userPrefs());
+
+  const dir = require("puppeteer-extra-plugin-user-data-dir");
+  puppeteer.use(dir());
 } else {
   puppeteer = require("puppeteer");
 } //
