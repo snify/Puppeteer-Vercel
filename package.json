@@ -21,8 +21,5 @@
   },
   "devDependencies": {
     "puppeteer": "^16.2.0"
-  },
-  "pkg": {
-    "assets": "node_modules/puppeteer-extra-plugin-stealth/**/*.*"
   }
 }
