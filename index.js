@@ -88,7 +88,7 @@ app.get("/api", async (req, res) => {
       urls: blockedResources,
     });
 
-    await page.setDefaultNavigationTimeout(10000);
+    await page.setDefaultNavigationTimeout(9000);
     const a = performance.now();
 
     await page.goto(
