@@ -59,9 +59,9 @@ app.get("/api", async (req, res) => {
 
     let page = await browser.newPage();
     await page.goto(
-      "https://www.whatismybrowser.com/detect/what-is-my-user-agent/"
+      "https://google.com" // "https://www.whatismybrowser.com/detect/what-is-my-user-agent/"
     );
-    res.json({ data: await page.content() });
+    res.json({ data: await page.title() });
   } catch (err) {
     console.error(err);
     return null;
