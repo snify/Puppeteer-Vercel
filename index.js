@@ -121,13 +121,13 @@ app.post("/api", async (req, res) => {
           "user-agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
         },
-        decompress: false,
-        responseType: "arraybuffer",
+        // decompress: false,
+        // responseType: "arraybuffer",
         // proxy: false,
         // httpsAgent: new HttpsProxyAgent(proxyUrl),
       });
 
-      data = zlib.gunzipSync(axiosResponse.data);
+      // data = zlib.gunzipSync(axiosResponse.data);
 
       // zlib.gunzip(axiosResponse, function (_err, output) {
       //   console.log(output.toString());
@@ -138,7 +138,7 @@ app.post("/api", async (req, res) => {
       // }).buffer();
       // data = inflateRawSync(axiosResponse?.data).toString();
 
-      // data = axiosResponse?.data;
+      data = axiosResponse?.data;
     }
 
     const b = performance.now();
