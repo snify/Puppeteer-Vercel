@@ -1,5 +1,6 @@
 const app = require("express")();
 const { performance } = require("perf_hooks");
+const axios = require("axios");
 
 let chrome = {};
 let puppeteer;
