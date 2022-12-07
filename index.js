@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 const { performance } = require("perf_hooks");
 const axios = require("axios");
 // const got = require("got");
-const { inflateRawSync } = require("zlib");
+const zlib = require("zlib");
 
 let chrome = {};
 let puppeteer;
@@ -122,16 +122,23 @@ app.post("/api", async (req, res) => {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
         },
         decompress: false,
+        responseType: "arraybuffer",
         // proxy: false,
         // httpsAgent: new HttpsProxyAgent(proxyUrl),
       });
+
+      data = zlib.gunzipSync(axiosResponse);
+
+      // zlib.gunzip(axiosResponse, function (_err, output) {
+      //   console.log(output.toString());
+      // });
 
       // const bufferData = await got(url, {
       //   decompress: false,
       // }).buffer();
       // data = inflateRawSync(axiosResponse?.data).toString();
 
-      data = axiosResponse?.data;
+      // data = axiosResponse?.data;
     }
 
     const b = performance.now();
