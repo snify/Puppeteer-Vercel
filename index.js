@@ -129,9 +129,9 @@ app.post("/api", async (req, res) => {
       // const bufferData = await got(url, {
       //   decompress: false,
       // }).buffer();
-      data = inflateRawSync(axiosResponse?.data).toString();
+      // data = inflateRawSync(axiosResponse?.data).toString();
 
-      // data = axiosResponse?.data;
+      data = axiosResponse?.data;
     }
 
     const b = performance.now();
