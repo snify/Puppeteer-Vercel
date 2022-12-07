@@ -127,7 +127,7 @@ app.post("/api", async (req, res) => {
         // httpsAgent: new HttpsProxyAgent(proxyUrl),
       });
 
-      data = zlib.gunzipSync(axiosResponse);
+      data = zlib.gunzipSync(axiosResponse.data);
 
       // zlib.gunzip(axiosResponse, function (_err, output) {
       //   console.log(output.toString());
