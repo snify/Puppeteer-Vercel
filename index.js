@@ -6,7 +6,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const { performance } = require("perf_hooks");
 const axios = require("axios");
-const got = require("got");
+// const got = require("got");
 const { inflateRawSync } = require("zlib");
 
 let chrome = {};
@@ -116,19 +116,20 @@ app.post("/api", async (req, res) => {
       // const proxyUrl =
       //   "http://brd-customer-hl_32d5cbee-zone-zone1_shared_payperusage:1qlcoayay2kv@zproxy.lum-superproxy.io:22225";
 
-      // const axiosResponse = await axios.get(url, {
-      //   headers: {
-      //     "user-agent":
-      //       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
-      //   },
-      //   // proxy: false,
-      //   // httpsAgent: new HttpsProxyAgent(proxyUrl),
-      // });
-
-      const bufferData = await got(url, {
+      const axiosResponse = await axios.get(url, {
+        headers: {
+          "user-agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
+        },
         decompress: false,
-      }).buffer();
-      data = inflateRawSync(bufferData).toString();
+        // proxy: false,
+        // httpsAgent: new HttpsProxyAgent(proxyUrl),
+      });
+
+      // const bufferData = await got(url, {
+      //   decompress: false,
+      // }).buffer();
+      data = inflateRawSync(axiosResponse?.data).toString();
 
       // data = axiosResponse?.data;
     }
