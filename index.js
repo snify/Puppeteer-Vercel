@@ -54,8 +54,9 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
 app.post("/api", async (req, res) => {
   let options = {};
   let url = req.body.url;
+  let withPuppeteer = req.body?.puppeteer;
 
-  const isUsingPuppeteer = false;
+  const isUsingPuppeteer = !!withPuppeteer || false;
 
   const a = performance.now();
   let data = "";
@@ -143,7 +144,7 @@ app.post("/api", async (req, res) => {
     }
 
     const b = performance.now();
-    res.json({ time: b - a + " ms.", data });
+    res.json({ time: b - a + " ms.", isUsingPuppeteer, data });
   } catch (err) {
     console.error(err);
     return null;
